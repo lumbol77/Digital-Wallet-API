@@ -1,8 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = "postgresql://postgres:Zuzul2024%40%23@localhost:5432/wallet_db"
-
 engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(

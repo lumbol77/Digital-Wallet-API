@@ -14,7 +14,7 @@ def get_wallet_balance(
     wallet = current_user.wallet
     return {"balance": wallet.balance}
 
-#Add a deposit route in wallet.py
+# Add a deposit route in wallet.py
 
 @router.post("/deposit")
 def deposit_money(

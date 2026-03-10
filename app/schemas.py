@@ -58,8 +58,8 @@ class TransactionResponse(BaseModel):
 class TransferRequest(BaseModel):
          receiver_email: EmailStr
          amount: float
-         
-# Add TransferHistory schema
+
+# Add Transfer History schema
 
 class TransferHistoryResponse(BaseModel):
     id: int

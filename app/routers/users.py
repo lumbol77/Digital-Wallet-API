@@ -1,12 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+
 from app import models, schemas, utils
 from app.database import get_db
 from app.security import create_access_token
-from app import schemas
 
 
 router = APIRouter(prefix="/users", tags=["Users"])
+
 
 @router.post("/", response_model=schemas.UserResponse)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
@@ -24,12 +25,13 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_user)
 
+    # Create wallet automatically
     new_wallet = models.Wallet(user_id=new_user.id)
     db.add(new_wallet)
     db.commit()
 
     return new_user
-from app.security import create_access_token
+
 
 @router.post("/login", response_model=schemas.Token)
 def login(user_credentials: schemas.UserLogin, db: Session = Depends(get_db)):
