@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
-
+from pydantic import ConfigDict
 
 class UserCreate(BaseModel):
     email: EmailStr
@@ -43,8 +43,11 @@ class TransactionResponse(BaseModel):
     type: str
     timestamp: datetime
 
-    class Config:
-        from_attributes = True
+
+
+class UserResponse(BaseModel):
+    # ... your fields ...
+    model_config = ConfigDict(from_attributes=True)
 
         #The above code allows Pydantic to return transaction objects.
 

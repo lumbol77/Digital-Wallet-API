@@ -12,7 +12,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 
 # stops the app if the URL is missing
 if not DATABASE_URL:
-    raise ValueError("DATABASE_URL is not set. Check your Render Environment Variables!")
+    raise ValueError("DATABASE_URL is not set.")
 
 # Create the connection to database
 engine = create_engine(DATABASE_URL)
@@ -26,6 +26,8 @@ SessionLocal = sessionmaker(
 
 # Create the Base class for models
 Base = declarative_base()
+
+#Implementing Atomic Transactions
 
 # used routes to talk to the database
 def get_db():
